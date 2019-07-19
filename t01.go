@@ -12,7 +12,12 @@ import (
 
 func main() {
 
-	influx, err := influxdb.New("http://127.0.0.1:9999/api/v2", "PBQNUEobb2lXcZ6EoYVDNAf6EaESD25Qnk56vUc-2L8EsHMblU6j1e8wlatM7wfRJxM6DNnv3ogoUbWg0ym5ww==")
+	dat, err := ioutil.ReadFile("/Users/ma/.influxdbv2/credentials")
+	check(err)
+
+	token := string(dat)
+
+	influx, err := influxdb.New("http://127.0.0.1:9999/api/v2", token)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,7 +30,7 @@ func main() {
 	now := time.Now()
 	err = influx.Write(context.Background(), "rick", "ag",
 		&influxdb.RowMetric{
-			NameStr: "bill",
+			NameStr: "michele",
 			Tags: []*influxdb.Tag{
 				{Key: "ktest1", Value: "k-test1"},
 				{Key: "ktest2,k-test3", Value: "k-test2, k-test3"}},
@@ -54,4 +59,10 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println(string(b))
+}
+
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
 }
