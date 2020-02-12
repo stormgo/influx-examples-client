@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	influx, err := influxdb.New("http://127.0.0.1:9999/api/v2", "PBQNUEobb2lXcZ6EoYVDNAf6EaESD25Qnk56vUc-2L8EsHMblU6j1e8wlatM7wfRJxM6DNnv3ogoUbWg0ym5ww==")
+	influx, err := influxdb.New("http://127.0.0.1:9999/api/v2", "7pOQF90FzHQPFQcu77gRV9SUDWXaB4wqU_8K_zA0lAQg7GxyE5JLHV9brZrAae3drj1T64dFjC3iqfL5eQ_tLA==")
 	if err != nil {
 		log.Fatal(err)
 	}
